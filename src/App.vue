@@ -8,12 +8,12 @@
         </div>
         <div>Analitics</div>
         <div class="btn-section">
-            <button @click="reorderGrid">Organizar</button>
-            <button @click="reorderGrid">Organizar</button>
+            <button @click="reorderGrid">Compactar</button>
+            <button @click="staticGrid= !staticGrid">Grid Estatico</button>
             <button @click="reorderGrid">Organizar</button>
         </div>
     </div>
-    <div class="grid-stack" ref="grid">
+    <div class="grid-stack" ref="grid" >
     <div
         v-for="widget in content.data"
         :key="widget.id"
@@ -23,6 +23,9 @@
         :gs-y="widget.grid.y"
         :gs-w="widget.grid.w"
         :gs-h="widget.grid.h"
+        :gs-no-move="widget.grid.noMove"
+        :gs-no-locked="widget.grid.locked"
+        :gs-no-resize="widget.grid.noResize"
         >
         <div
             class="grid-stack-item-content p-4 bg-white rounded-md shadow-md flex items-center justify-center text-gray-700"
@@ -31,12 +34,18 @@
             <span class="text-2xl">{{ widget.title }}</span>
             </div>
             <div class="widget-body">
-            <apexchart
-                :options="widget.content.chartOptions"
-                :series="widget.content.series"
-                height="200"
-                ref="chart"
-            ></apexchart>
+
+                <div v-if="widget.id === 10">
+                    <img src="./../src/assets/bus.jpg"  width="300" height="200" alt="">
+                </div>
+                <div v-else>
+                    <apexchart
+                    :options="widget.content.chartOptions"
+                    :series="widget.content.series"
+                    height="200"
+                    ref="chart"
+                    ></apexchart>
+                </div>
             </div>
         </div>
         </div>
@@ -50,7 +59,8 @@ import { GridStack } from 'gridstack'
 import 'gridstack/dist/gridstack.min.css'
 import 'gridstack/dist/gridstack-extra.min.css'
 import charts from './moch/charts'
-const content = reactive({data:[]})
+const content = reactive({data:[],staticGrid:false})
+const staticGrid =  ref(false)
 
 let grid = null
 
@@ -63,6 +73,7 @@ function initGridStack() {
         minRow: 1,
         margin: 10,
         handle: '.widget-header',
+        staticGrid: staticGrid.value
     })
 
     grid.on('resizestop', (event, element) => {
@@ -93,6 +104,8 @@ function makeWidget(item) {
 
 onMounted(() => {
     initGridStack()
+
+    console.log(staticGrid.value)
 })
 
 onBeforeMount(()=>{

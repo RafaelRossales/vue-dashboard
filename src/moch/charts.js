@@ -15,9 +15,25 @@ function generateDayWiseTimeSeries(baseval, count, yrange) {
 }
 
 const charts =  [
+  {
+    id:10,
+    title:'Onibus Marcopolo',
+    content:{
+      img:'./../assets/Marcopolo G7 Paradiso 1050.jpg'
+    },
+    grid: {
+      x: 0,
+      y: 9,
+      w: 1,
+      h: 3,
+      noMove: true, 
+      noResize: true, 
+      locked: true, 
+      },
+  },
     {
         id: 1,
-        title: 'First Widget',
+        title: 'First Widget_1',
         content: {
         chartOptions: {
             chart: {
@@ -49,9 +65,12 @@ const charts =  [
         },
         grid: {
             x: 0,
-            y: 0,
-            w: 2,
+            y: 3,
+            w: 0,
             h: 3,
+            noMove: false, 
+            noResize: false, 
+            locked: false, 
         },
     },
     {
@@ -88,10 +107,13 @@ const charts =  [
               }],
         },
         grid: {
-          x: 6,
-          y: 5,
+          x: 2,
+          y: 2,
           w: 2,
           h: 3,
+          noMove: false, 
+          noResize: false, 
+          locked: false, 
         },
     },
     {
@@ -149,10 +171,13 @@ const charts =  [
             }],
         },
         grid: {
-            x: 10,
-            y: 5,
+            x: 1,
+            y: 0,
             w: 2,
             h: 3,
+            noMove: false, 
+            noResize: false, 
+            locked: false, 
         },
     },
     {
@@ -184,10 +209,13 @@ const charts =  [
         },
     },
         grid: {
-            x: 0,
+            x: 1,
             y: 0,
             w: 1,
             h: 3,
+            noMove: false, 
+            noResize: false, 
+            locked: false, 
         },
     },
     {
@@ -219,17 +247,20 @@ const charts =  [
         },
     },
         grid: {
-            x: 1,
-            y: 1,
+            x: 2,
+            y: 8,
             w: 1,
             h: 3,
+            noMove: false, 
+            noResize: false, 
+            locked: false, 
         },
     },
     {
         id:6,
         title:'Teste',
         content:{
-         chartOptions: {
+          chartOptions: {
             chart: {
               type: 'area',
               height: 350,
@@ -287,10 +318,13 @@ const charts =  [
           ],
         },
         grid: {
-        x: 6,
+        x: 5,
         y: 5,
         w: 3,
         h: 3,
+        noMove: false, 
+        noResize: false, 
+        locked: false, 
         },
     }
 ]
